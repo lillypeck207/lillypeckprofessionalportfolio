@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Access Anvil Corp. — Lilly Peck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2d4a3a;
+    --forest-deep: #1f3528;
+    --sage: #8ea696;
+    --sage-light: #b8c7bc;
+    --warm-gray: #9a9690;
+    --charcoal: #3a3835;
+    --cream: #f4efe6;
+    --cream-warm: #ebe4d6;
+    --silver: #c9c4ba;
+    --gold: #a08651;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Outfit', sans-serif; background: radial-gradient(ellipse 80% 60% at 15% 10%, rgba(142, 166, 150, 0.18), transparent 60%), radial-gradient(ellipse 70% 50% at 90% 90%, rgba(45, 74, 58, 0.12), transparent 60%), linear-gradient(135deg, var(--cream) 0%, var(--cream-warm) 50%, #e3ddd0 100%); color: var(--charcoal); min-height: 100vh; line-height: 1.6; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.35'/></svg>"); opacity: 0.18; pointer-events: none; z-index: 1; mix-blend-mode: multiply; }
+  .wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 50px 60px 100px; }
+  .top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 60px; padding-bottom: 20px; border-bottom: 1px solid rgba(45, 74, 58, 0.15); }
+  .top-nav .brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 22px; color: var(--forest-deep); text-decoration: none; }
+  .top-nav .back { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--forest); text-decoration: none; transition: color 0.2s; }
+  .top-nav .back:hover { color: var(--gold); }
+
+  /* Top-right dropdown menu */
+  .nav-menu { position: relative; }
+  .nav-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid rgba(45, 74, 58, 0.25);
+    border-radius: 2px;
+    padding: 9px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .nav-menu-trigger:hover { border-color: var(--forest); color: var(--forest-deep); background: rgba(244, 239, 230, 0.4); }
+  .nav-menu-trigger svg { width: 10px; height: 10px; transition: transform 0.25s; }
+  .nav-menu.open .nav-menu-trigger svg { transform: rotate(180deg); }
+
+  .nav-menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 220px;
+    background: var(--cream);
+    border: 1px solid rgba(45, 74, 58, 0.18);
+    border-radius: 2px;
+    box-shadow: 0 24px 50px -18px rgba(31, 53, 40, 0.25);
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    z-index: 100;
+  }
+  .nav-menu.open .nav-menu-panel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .nav-menu-panel a {
+    display: block;
+    padding: 11px 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--forest-deep);
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s, padding-left 0.18s;
+    border-left: 2px solid transparent;
+  }
+  .nav-menu-panel a:hover {
+    background: rgba(160, 134, 81, 0.08);
+    color: var(--forest);
+    padding-left: 26px;
+    border-left-color: var(--gold);
+  }
+  .nav-menu-panel a.current {
+    color: var(--gold);
+    font-style: italic;
+    border-left-color: var(--gold);
+  }
+  .nav-menu-panel a.current::after {
+    content: ' ·';
+    color: var(--sage);
+  }
+  .header { margin-bottom: 60px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--forest); font-weight: 500; margin-bottom: 22px; display: inline-flex; align-items: center; gap: 14px; }
+  .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--forest); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(48px, 6vw, 76px); line-height: 1; color: var(--forest-deep); letter-spacing: -0.01em; margin-bottom: 14px; }
+  h1 em { font-style: italic; font-weight: 300; color: var(--gold); }
+  .role { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 24px; color: var(--charcoal); opacity: 0.85; margin-bottom: 18px; }
+  .tags { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal); opacity: 0.65; }
+  .tags .sep { color: var(--sage); margin: 0 8px; }
+  .section { margin-bottom: 52px; }
+  .section-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 32px; color: var(--forest-deep); margin-bottom: 18px; display: flex; align-items: center; gap: 16px; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .section p { font-size: 16px; line-height: 1.75; color: var(--charcoal); max-width: 760px; margin-bottom: 14px; }
+  .section ul { list-style: none; padding: 0; margin: 0; max-width: 760px; }
+  .section ul li { font-size: 16px; color: var(--charcoal); line-height: 1.6; padding: 10px 0; border-bottom: 1px solid rgba(45, 74, 58, 0.08); display: flex; align-items: flex-start; gap: 14px; }
+  .section ul li:last-child { border-bottom: none; }
+  .section ul li::before { content: ''; width: 5px; height: 5px; background: var(--sage); border-radius: 50%; flex-shrink: 0; margin-top: 10px; }
+  .visuals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 18px; }
+
+  .subsection { margin-bottom: 50px; padding-bottom: 14px; }
+  .subsection:last-child { margin-bottom: 0; padding-bottom: 0; }
+  .subsection-label { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 24px; color: var(--forest-deep); line-height: 1.2; margin-bottom: 8px; padding-left: 14px; border-left: 2px solid var(--gold); }
+  .subsection-label em { font-style: italic; font-weight: 300; color: var(--charcoal); opacity: 0.8; }
+  .subsection-desc { font-size: 15px; line-height: 1.65; color: var(--charcoal); opacity: 0.85; max-width: 760px; margin-bottom: 14px; padding-left: 14px; }
+
+  /* Paired posters: exactly 2 columns, no leftover space */
+  .paired-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; margin-top: 18px; }
+
+  /* Post + caption side-by-side */
+  /* Internal poster — about half page wide */
+  .internal-poster { max-width: 540px; margin-top: 18px; }
+
+  /* Post + caption side-by-side — image about half page wide, caption fills the rest */
+  .post-with-caption { display: grid; grid-template-columns: 540px minmax(0, 1fr); gap: 28px; margin-top: 18px; align-items: start; max-width: 1080px; }
+  .caption-card { background: rgba(244, 239, 230, 0.55); border: 1px solid rgba(45, 74, 58, 0.15); border-radius: 2px; padding: 28px 30px; display: flex; flex-direction: column; justify-content: center; }
+  .caption-card .caption-tag { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; font-weight: 500; }
+  .caption-card p { font-size: 14.5px; line-height: 1.65; color: var(--charcoal); margin-bottom: 12px; }
+  .caption-card p:last-child { margin-bottom: 0; }
+  .caption-card .caption-tags { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 13.5px; color: var(--forest); opacity: 0.85; margin-top: 4px; }
+  .visual { background: rgba(244, 239, 230, 0.5); border: 1px solid rgba(45, 74, 58, 0.15); border-radius: 2px; overflow: hidden; display: flex; flex-direction: column; }
+  .visual-frame { position: relative; width: 100%; aspect-ratio: 4 / 3; background: var(--cream-warm); }
+  .visual-frame.portrait { aspect-ratio: 9 / 16; }
+  .visual-frame.tall { aspect-ratio: 3 / 4; }
+  .visual-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .visual-caption { padding: 14px 18px 16px; border-top: 1px solid rgba(45, 74, 58, 0.1); }
+  .visual-caption .vc-tag { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .visual-caption .vc-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--forest-deep); line-height: 1.3; }
+  /* Brand launch plan — about half page wide */
+  .feature-doc { background: rgba(244, 239, 230, 0.5); border: 1px solid rgba(45, 74, 58, 0.15); border-radius: 2px; overflow: hidden; margin-top: 24px; max-width: 540px; }
+  .feature-doc-frame { position: relative; width: 100%; aspect-ratio: 8.5 / 11; background: var(--cream-warm); }
+  .feature-doc-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .feature-doc-caption { padding: 16px 22px 18px; border-top: 1px solid rgba(45, 74, 58, 0.1); }
+  .feature-doc-caption .vc-tag { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .feature-doc-caption .vc-title { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--forest-deep); line-height: 1.3; }
+  .case-footer { margin-top: 80px; padding-top: 30px; border-top: 1px solid rgba(45, 74, 58, 0.15); display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+  .case-footer a { color: var(--forest); text-decoration: none; transition: color 0.2s; }
+  .case-footer a:hover { color: var(--gold); }
+  @media (max-width: 800px) { .wrap { padding: 30px 24px 80px; } .visuals-grid { grid-template-columns: 1fr; } .paired-grid { grid-template-columns: 1fr; } .post-with-caption { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <nav class="top-nav">
+    <a class="brand" href="../index.html">Lilly Peck</a>
+    <div class="nav-menu" id="navMenu">
+      <button class="nav-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Menu</span>
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-menu-panel" role="menu">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <a href="../skills.html">Skills</a>
+        <a href="../projects.html" class="current">Case Studies</a>
+        <a href="../accomplishments.html">Accomplishments</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="header">
+    <div class="eyebrow">Case Study · 05</div>
+    <h1>Access <em>Anvil Corp.</em></h1>
+    <div class="role">Marketing &amp; Brand Strategy Intern</div>
+    <div class="tags">
+      Construction &amp; Manufacturing <span class="sep">/</span> Greenwich, NY <span class="sep">/</span> Brand Launch <span class="sep">/</span> Internal &amp; External Communications
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-label">Project Overview</h2>
+    <p>Access Anvil Corp. is a construction and manufacturing company based in Greenwich, New York, specializing in commercial fencing, concrete forming, and fabrication. It operates under the umbrella of The Fort Miller Group Inc., alongside several sister companies. During my internship, the company was undergoing a brand refresh, and I supported marketing initiatives by creating content and contributing to a strategic plan for launching the company's new logo and refreshed brand identity.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-label">My Role</h2>
+    <p>I supported marketing communications and social media content while contributing to a strategic launch plan for the company's new logo and refreshed brand identity. I also created internal communication materials shared across Access Anvil and its sister companies under The Fort Miller Group.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-label">Scope of Work</h2>
+    <ul>
+      <li>Created and managed social media content for the company's Facebook and LinkedIn accounts</li>
+      <li>Designed banners, posters, and presentation graphics for company communications</li>
+      <li>Developed a multi-phase logo launch strategy outlining internal communication, social media rollout, and brand integration</li>
+      <li>Designed internal communication posters distributed across sister companies under The Fort Miller Group</li>
+      <li>Planned customer-feedback surveys to measure brand perception during the rollout</li>
+      <li>Attended internal meetings with team members and partner companies to gain insight into marketing strategy and business operations</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2 class="section-label">Results</h2>
+    <p>The work produced a structured framework for the brand rollout, improved coordination of internal communication across The Fort Miller Group's family of companies, and gave the marketing team a clear, multi-phase plan for launching the new logo to customers and employees with a consistent message.</p>
+  </section>
+
+  <section class="section">
+    <h2 class="section-label">Selected Work — Brand Launch Plan</h2>
+
+    <div class="feature-doc">
+      <div class="feature-doc-frame">
+        <iframe src="https://drive.google.com/file/d/1Gi7PMtS9vWi3IBX76b2v-c849md3clG5/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+      <div class="feature-doc-caption">
+        <div class="vc-tag">Strategy Document</div>
+        <div class="vc-title">Access Anvil Logo Launch Plan</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-label">Selected Work</h2>
+
+    <div class="subsection">
+      <h3 class="subsection-label">Internal <em>Communications</em></h3>
+      <p class="subsection-desc">Poster designed for internal communications across The Fort Miller Group's family of sister companies, of which Access Anvil is part.</p>
+      <div class="internal-poster">
+        <div class="visual">
+          <div class="visual-frame tall">
+            <iframe src="https://drive.google.com/file/d/1UjUrxDBoV7Ru5H5F3venLdr_b3uWl6an/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="visual-caption">
+            <div class="vc-tag">Internal Poster</div>
+            <div class="vc-title">Fort Miller Group Communication</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-label">Social Media <em>— Overhead Door</em></h3>
+      <p class="subsection-desc">LinkedIn and Facebook post highlighting a recent Overhead Door garage door installation by a Fort Miller Group sister company. I created the post and wrote the accompanying caption to drive engagement and showcase the transformation.</p>
+
+      <div class="post-with-caption">
+        <div class="visual">
+          <div class="visual-frame tall">
+            <iframe src="https://drive.google.com/file/d/1j1qgUwF_rKJFJxQD26DvJ3uAywVqFSAy/preview" allow="autoplay" allowfullscreen></iframe>
+          </div>
+          <div class="visual-caption">
+            <div class="vc-tag">LinkedIn &amp; Facebook Post</div>
+            <div class="vc-title">Overhead Door — Before &amp; After</div>
+          </div>
+        </div>
+        <div class="caption-card">
+          <div class="caption-tag">Post Caption</div>
+          <p>Check out this stunning transformation by Overhead Door!</p>
+          <p>This incredible before and after showcases a recent garage door installation, evolving from outdated to a modern, insulated steel door platform that enhances security and boosts curb appeal.</p>
+          <p>The oversized windows allow maximum natural light, setting it apart as one of the largest garage door windows on the market. Whether you're looking to improve energy efficiency or upgrade your home's aesthetic, this garage door is the perfect choice.</p>
+          <p class="caption-tags">#GarageDoorTransformation &nbsp; #HomeImprovement &nbsp; #OverheadDoor</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <nav class="case-footer">
+    <a href="blkdog-designs.html">← Previous: BLKDOG Designs</a>
+    <a href="../projects.html">All Case Studies →</a>
+  </nav>
+
+</div>
+
+<script>
+  // Dropdown menu toggle
+  (function () {
+    const menu = document.getElementById('navMenu');
+    if (!menu) return;
+    const trigger = menu.querySelector('.nav-menu-trigger');
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = menu.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!menu.contains(e.target)) {
+        menu.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        menu.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Accomplishments — Lilly Peck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #2d4a3a;
+    --forest-deep: #1f3528;
+    --sage: #8ea696;
+    --sage-light: #b8c7bc;
+    --warm-gray: #9a9690;
+    --charcoal: #3a3835;
+    --cream: #f4efe6;
+    --cream-warm: #ebe4d6;
+    --silver: #c9c4ba;
+    --gold: #a08651;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 10%, rgba(142, 166, 150, 0.18), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 90%, rgba(45, 74, 58, 0.12), transparent 60%),
+      linear-gradient(135deg, var(--cream) 0%, var(--cream-warm) 50%, #e3ddd0 100%);
+    color: var(--charcoal);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2 0 0 0 0 0.2 0 0 0 0 0.18 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+  .wrap { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; padding: 50px 60px 100px; }
+
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(45, 74, 58, 0.15);
+  }
+  .top-nav .brand { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; font-size: 22px; color: var(--forest-deep); text-decoration: none; }
+  .top-nav .back { font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--forest); text-decoration: none; transition: color 0.2s; }
+  .top-nav .back:hover { color: var(--gold); }
+
+  /* Top-right dropdown menu */
+  .nav-menu { position: relative; }
+  .nav-menu-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: 1px solid rgba(45, 74, 58, 0.25);
+    border-radius: 2px;
+    padding: 9px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--forest);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .nav-menu-trigger:hover { border-color: var(--forest); color: var(--forest-deep); background: rgba(244, 239, 230, 0.4); }
+  .nav-menu-trigger svg { width: 10px; height: 10px; transition: transform 0.25s; }
+  .nav-menu.open .nav-menu-trigger svg { transform: rotate(180deg); }
+
+  .nav-menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 220px;
+    background: var(--cream);
+    border: 1px solid rgba(45, 74, 58, 0.18);
+    border-radius: 2px;
+    box-shadow: 0 24px 50px -18px rgba(31, 53, 40, 0.25);
+    padding: 8px 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.22s ease;
+    z-index: 100;
+  }
+  .nav-menu.open .nav-menu-panel {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .nav-menu-panel a {
+    display: block;
+    padding: 11px 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--forest-deep);
+    text-decoration: none;
+    transition: background 0.18s, color 0.18s, padding-left 0.18s;
+    border-left: 2px solid transparent;
+  }
+  .nav-menu-panel a:hover {
+    background: rgba(160, 134, 81, 0.08);
+    color: var(--forest);
+    padding-left: 26px;
+    border-left-color: var(--gold);
+  }
+  .nav-menu-panel a.current {
+    color: var(--gold);
+    font-style: italic;
+    border-left-color: var(--gold);
+  }
+  .nav-menu-panel a.current::after {
+    content: ' ·';
+    color: var(--sage);
+  }
+
+  .header { text-align: center; margin-bottom: 70px; }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .eyebrow::before, .eyebrow::after { content: ''; width: 36px; height: 1px; background: var(--forest); }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(50px, 6vw, 78px);
+    line-height: 1;
+    color: var(--forest-deep);
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; font-weight: 300; color: var(--gold); }
+  .header .sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--charcoal);
+    opacity: 0.8;
+    margin-top: 18px;
+  }
+
+  /* Honor section blocks - one per honor */
+  .honor {
+    background: rgba(244, 239, 230, 0.55);
+    border: 1px solid rgba(45, 74, 58, 0.15);
+    border-radius: 2px;
+    padding: 44px 50px 40px;
+    margin-bottom: 28px;
+    position: relative;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 30px -18px rgba(31, 53, 40, 0.15);
+  }
+
+  /* Decorative corners */
+  .honor::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 22px;
+    height: 22px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    opacity: 0.6;
+  }
+  .honor::after {
+    content: '';
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    width: 22px;
+    height: 22px;
+    border-bottom: 1px solid var(--gold);
+    border-left: 1px solid var(--gold);
+    opacity: 0.6;
+  }
+
+  .honor-header { margin-bottom: 22px; }
+  .honor-num {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .honor-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--forest-deep);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .honor-title em { font-style: italic; font-weight: 300; }
+  .honor-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: var(--charcoal);
+    opacity: 0.78;
+    line-height: 1.3;
+  }
+
+  .honor-divider {
+    width: 36px;
+    height: 1px;
+    background: var(--sage);
+    margin: 18px 0 22px;
+  }
+
+  .honor-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--charcoal);
+    max-width: 760px;
+    margin-bottom: 28px;
+  }
+
+  /* Embedded visuals for each honor */
+  .honor-visuals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .honor-visual {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(45, 74, 58, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .honor-visual-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 8.5 / 11;
+    background: var(--cream-warm);
+  }
+  .honor-visual-frame.landscape { aspect-ratio: 4 / 3; }
+  .honor-visual-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .honor-visual-caption {
+    padding: 12px 16px 14px;
+    border-top: 1px solid rgba(45, 74, 58, 0.08);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 800px) {
+    .wrap { padding: 30px 24px 80px; }
+    .honor { padding: 32px 28px 28px; }
+    .honor-title { font-size: 28px; }
+    .honor-visuals { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <nav class="top-nav">
+    <a class="brand" href="index.html">Lilly Peck</a>
+    <div class="nav-menu" id="navMenu">
+      <button class="nav-menu-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+        <span>Menu</span>
+        <svg viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-menu-panel" role="menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Case Studies</a>
+        <a href="accomplishments.html" class="current">Accomplishments</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header">
+    <div class="eyebrow">Accomplishments · 04</div>
+    <h1>Honors &amp; <em>Recognition</em></h1>
+    <div class="sub">Recognitions earned along the way.</div>
+  </div>
+
+  <!-- Honor 01 — Beta Gamma Sigma -->
+  <article class="honor">
+    <div class="honor-header">
+      <div class="honor-num">Honor 01</div>
+      <div class="honor-title">Beta Gamma <em>Sigma</em></div>
+      <div class="honor-subtitle">International Business Honor Society</div>
+    </div>
+    <div class="honor-divider"></div>
+    <p class="honor-desc">
+      Inducted into the top 10% of undergraduate business students at an AACSB-accredited university, recognizing academic excellence and achievement in business.
+    </p>
+    <div class="honor-visuals">
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/1J76i-RUq2R6tBiAuVtVZedeGTD7AUUGz/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">Beta Gamma Sigma · Certificate</div>
+      </div>
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/1JbfYwo0tisqXpQllLy4sAIcW88ozwXMn/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">Beta Gamma Sigma · Recognition</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Honor 02 — Alpha Mu Alpha -->
+  <article class="honor">
+    <div class="honor-header">
+      <div class="honor-num">Honor 02</div>
+      <div class="honor-title">Alpha Mu <em>Alpha</em></div>
+      <div class="honor-subtitle">American Marketing Association · Marketing Honor Society</div>
+    </div>
+    <div class="honor-divider"></div>
+    <p class="honor-desc">
+      Selected and nominated by academic faculty based on academic performance and demonstrated commitment to the field of marketing.
+    </p>
+    <div class="honor-visuals">
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/1xstWQfTMm3jmvX6hTTTZUAFzc0tllJet/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">Alpha Mu Alpha · Certificate</div>
+      </div>
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/17QEUcpYZYknkjAw2JAKhS-4KrDAwdqWY/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">Alpha Mu Alpha · Recognition</div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Honor 03 — Dean's List -->
+  <article class="honor">
+    <div class="honor-header">
+      <div class="honor-num">Honor 03</div>
+      <div class="honor-title">Dean's <em>List</em></div>
+      <div class="honor-subtitle">Marist University · 7 Semesters</div>
+    </div>
+    <div class="honor-divider"></div>
+    <p class="honor-desc">
+      Awarded for consistent academic excellence across seven consecutive semesters at Marist University.
+    </p>
+  </article>
+
+  <!-- Honor 04 — Enterprise Mobility -->
+  <article class="honor">
+    <div class="honor-header">
+      <div class="honor-num">Honor 04</div>
+      <div class="honor-title">Enterprise Mobility <em>— Performance Recognition</em></div>
+      <div class="honor-subtitle">Top-Performing Intern, Regional Recognition</div>
+    </div>
+    <div class="honor-divider"></div>
+    <p class="honor-desc">
+      Recognized as a top-performing intern, ranking #1 on performance metrics in my first month, #2 in my second month, and currently #1 for insurance customers based on performance metrics across approximately 45 employees in the region.
+    </p>
+    <div class="honor-visuals">
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/10JMXhVGfWOJjliUIczgkmO3g6d8hm6L_/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">#1 Intern · First-Month Recognition</div>
+      </div>
+      <div class="honor-visual">
+        <div class="honor-visual-frame">
+          <iframe src="https://drive.google.com/file/d/1v0dD4oj1arL1Twysp9qGBXhGDRnyJ1_x/preview" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="honor-visual-caption">Performance Recognition</div>
+      </div>
+    </div>
+  </article>
+
+</div>
+
+<script>
+  // Dropdown menu toggle
+  (function () {
+    const menu = document.getElementById('navMenu');
+    if (!menu) return;
+    const trigger = menu.querySelector('.nav-menu-trigger');
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = menu.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', function (e) {
+      if (!menu.contains(e.target)) {
+        menu.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        menu.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
